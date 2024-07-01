@@ -6,6 +6,7 @@ on:
       - '**-test' # Exec workflow on every branch that finish with '-test'
   schedule:
     - cron: '0 * * * *' # Exec every hour
+  workflow_dispatch:
 
 jobs:
   backup:
