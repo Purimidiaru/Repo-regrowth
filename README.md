@@ -1,6 +1,5 @@
 # devops-technical-test-data
 
-
 # DevOps Technical Project - Descartes Underwriting
 
 ## Introduction
