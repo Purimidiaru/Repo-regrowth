@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: '3.12.4' #Set up Python with 3.12.4 version
 
-      # Install all dependencies with pip and the requirements.txt which contains all dependencies
+      # Install all dependencies with pip and the requirements.txt which contains all dependencies if needed
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -35,10 +35,14 @@ jobs:
       # Exec git commands
       - name: Commit and push backups
         run: |
-          git config --global user.name 'Paul'
-          git config --global user.email 'p.damquangthanh@gmail.com'
+          if [ -z "$(git config --global user.name)" ]; then
+            git config --global user.name "Paul"
+          fi
+          if [ -z "$(git config --global user.email)" ]; then
+            git config --global user.email "p.damquangthanh@gmail.com"
+          fi
           git add data/
-          git commit -m "Backup: $(date)"
+          git commit -m "Backup: $(date)" || echo "No changes to commit"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
