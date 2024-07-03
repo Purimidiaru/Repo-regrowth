@@ -35,8 +35,8 @@ jobs:
       # Exec git commands
       - name: Commit and push backups
         run: |
-          git config --global user.name 'Paul'
-          git config --global user.email 'p.damquangthanh@gmail.com'
+          git config --global user.name "Paul"
+          git config --global user.email "p.damquangthanh@gmail.com"
           git add data/
           git commit -m "Backup: $(date)" || echo "No changes to commit
           git push
