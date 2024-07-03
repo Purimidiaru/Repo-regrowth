@@ -41,7 +41,11 @@ It was enough to check if all the files were in the right commits, where each fo
 #### Step 4: The workflow
 It was something quite rudimentary in the end, the most important thing for me was to properly separate the steps. A difficulty I encountered was handling GitHub Actions since I faced several errors in my workflow due to a lack of GitHub Token. However, after that, it got sorted out quickly.
 
-**Note**: The last changes was simply pure optimization and README writting to explain you how I process it. At the end, I took between 2 and 3 hours just suggested to be fair and square.
+**Note**: The last changes was simply pure optimization and README writting to explain you how I process it. 
+
+At the end, I took between 2 and 3 hours just suggested to be fair and square.
+
+I turned off the workflow to ensure useless billing. You are free to turn it on and also test it in any way you want !
 
 If you have any questions, feel free to ask!
 
