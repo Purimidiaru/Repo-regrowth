@@ -1,6 +1,5 @@
 # devops-technical-test-data
 
-
 # DevOps Technical Project - Descartes Underwriting
 
 ## Introduction
@@ -35,7 +34,7 @@ It was enough to check if all the files were in the right commits, where each fo
 #### Step 4: The workflow
 It was something quite rudimentary in the end, the most important thing for me was to properly separate the steps. A difficulty I encountered was handling GitHub Actions since I faced several errors in my workflow due to a lack of GitHub Token. However, after that, it got sorted out quickly.
 
-
+Last edit : I just reminded that I forget to ajust one file in one specific case, it was a minor change. If you want to test out the workflow with the scheduling part, it might be the best to take the last one. However if you just want to test locally in a single time, the before last one is enough
 If you have any questions, feel free to ask!
 
 Created by Paul Dam Quang Thanh

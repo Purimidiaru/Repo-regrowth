@@ -42,7 +42,7 @@ jobs:
             git config --global user.email "p.damquangthanh@gmail.com"
           fi
           git add data/
-          git commit -m "Backup: $(date)" || echo "No changes to commit"
+          git commit -m "Backup: $(date)" || echo "No changes to commit
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
