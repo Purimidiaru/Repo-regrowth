@@ -50,8 +50,14 @@ def main():
     clone_repo()
     checkout_branch()
     commits = get_all_commits()
+    backup_dir = '../data'
+    if not os.path.exists(backup_dir):
+        os.makedirs(backup_dir)
     for commit in commits:
-        backup_commit(commit)
+        commit_dir = os.path.join(backup_dir, commit)
+        # Verify if there is no new commit to backup to avoid errors
+        if not os.path.exists(commit_dir):
+            backup_commit(commit)
     reset_branch_state()
 
 if __name__ == '__main__':
