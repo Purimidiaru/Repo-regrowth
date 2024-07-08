@@ -16,21 +16,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4 # Clone and checkout branch
 
-      - name: Python Setup
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12.4' #Set up Python with 3.12.4 version
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-      # Install all dependencies with pip and the requirements.txt which contains all dependencies if needed
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt 
+      - name: Build Docker image
+        run: docker build -t backup-script .
 
-      # Run Python script
-      - name: Backup script
-        run: |
-          python script/my-beautiful-script.py
+      - name: Run Docker container
+        run: docker run -v $(pwd)/data:/usr/src/app/data backup-script
 
       # Exec git commands
       - name: Commit and push backups
