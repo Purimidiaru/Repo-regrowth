@@ -7,10 +7,11 @@ Here is my repo for the DevOps technical project of Descartes Underwriting.
 
 This README explains in a few sentences how I proceeded for this project.
 
-**Note:** If you want to test it, you can run the python script. I deleted it to have a clean repo. Just run the command:
+**Note:** If you want to test it, you can run the python script with Docker. I implemented it to get a clean environnement:
 
 ```bash
-python -m unittest tests/test_backup.py
+docker build -t backup-script .
+docker run --rm -v $(pwd)/data:/usr/src/app/data backup-script
 ```
 
 #### Step 1: Understanding the structure
@@ -31,15 +32,25 @@ Then it was just a matter of basic git commands with a bit of algorithm where I 
 
 At first, I did it with just instructions without separating into functions, but I wanted to have cleaner code, so I decided to make functions.
 
+One of the hardest thing to support was the special characters because it wasn't support by the script. So I had the sanitize the path names.
 
 #### Step 3: The tests
 There wasn't much to do, in the end, it was mostly about result verification, where I used unittest for the creation of unit tests.
 
 It was enough to check if all the files were in the right commits, where each folder corresponded to a commit.
 
+I also sanitize the path names
 
 #### Step 4: The workflow
 It was something quite rudimentary in the end, the most important thing for me was to properly separate the steps. A difficulty I encountered was handling GitHub Actions since I faced several errors in my workflow due to a lack of GitHub Token. However, after that, it got sorted out quickly.
+
+For the last commit, I just implemented Docker in the workflow which seems to be the best practices in my opinion.
+
+#### Additional Step: Docker
+
+I suddenly reminded during a waking-up that it was the best to create a virtual environnement through Docker.
+
+There is only a simple Dockerfile yet really important to get the right resultats because I noticed that I get difference results depending of the OS used to test the project.
 
 **Note**: The last changes was simply pure optimization and README writting to explain you how I process it. 
 
