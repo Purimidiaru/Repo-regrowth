@@ -1,5 +1,6 @@
 import os
 import subprocess
+import codecs
 
 REPO_URL = 'https://github.com/descartes-underwriting/devops-technical-test-data.git'
 BRANCH = '01-01-2022-test'
@@ -19,12 +20,18 @@ def get_all_commits():
     commits = subprocess.check_output(['git', 'log', '--pretty=format:%H']).decode('utf-8').splitlines()
     return commits
 
+def decode_escaped_path(escaped_path):
+    # Decode escaped path to solve path names
+    escaped_path = escaped_path.strip('"')
+    return codecs.escape_decode(escaped_path)[0].decode('utf-8')
+
 def backup_commit(commit):
     # Checkout all commit
     subprocess.run(['git', 'checkout', commit])
 
-    # Get all modified files in the commit
-    modified_files = subprocess.check_output(['git', 'diff-tree', '--no-commit-id', '--name-only', '-r', commit]).decode('utf-8').splitlines()
+    # Get all modified files in the commit (Used git show instead of git diff-tree to get README.md)
+    modified_files = subprocess.check_output(['git', 'show', '--pretty=format:', '--name-only', commit]).decode('utf-8').splitlines()
+    print(f"Modified files for commit {commit}: {modified_files}")
 
     # Define dir to get all backup
     backup_dir = '../data'
@@ -34,13 +41,19 @@ def backup_commit(commit):
     os.makedirs(commit_dir, exist_ok=True)
 
     for file in modified_files:
+        # Sanitize file naming
+        sanitized_file = decode_escaped_path(file)
+
         # Create dirs
-        file_dir = os.path.join(commit_dir, os.path.dirname(file))
+        file_dir = os.path.join(commit_dir, os.path.dirname(sanitized_file))
         os.makedirs(file_dir, exist_ok=True)
         
         # Copying file
-        if os.path.exists(file):
-            subprocess.run(['cp', file, file_dir])
+        if os.path.exists(sanitized_file):
+            subprocess.run(['cp', sanitized_file, file_dir])
+            print(f"Copied {sanitized_file} to {file_dir}")
+        else:
+            print(f"File does not exist: {sanitized_file}")
 
 def reset_branch_state():
     # Reset branch state
@@ -51,10 +64,13 @@ def main():
     checkout_branch()
     commits = get_all_commits()
     backup_dir = '../data'
+
     if not os.path.exists(backup_dir):
         os.makedirs(backup_dir)
+
     for commit in commits:
         commit_dir = os.path.join(backup_dir, commit)
+        
         # Verify if there is no new commit to backup to avoid errors
         if not os.path.exists(commit_dir):
             backup_commit(commit)
