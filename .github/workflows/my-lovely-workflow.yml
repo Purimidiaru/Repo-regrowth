@@ -16,14 +16,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4 # Clone and checkout branch
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+      - name: Set up Docker Build
+        uses: docker/setup-buildx-action@v1 # Setup Docker build as it's entilted
 
       - name: Build Docker image
-        run: docker build -t backup-script .
+        run: docker build -t backup-script . # Build up the Docker image from Dockerfile and it will be named "backup-script"
 
       - name: Run Docker container
-        run: docker run -v $(pwd)/data:/usr/src/app/data backup-script
+        run: docker run -v $(pwd)/data:/usr/src/app/data backup-script # Run Docker container
 
       # Exec git commands
       - name: Commit and push backups
