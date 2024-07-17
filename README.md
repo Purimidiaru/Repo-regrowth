@@ -30,19 +30,21 @@ Then it was just a matter of basic git commands with a bit of algorithm where I 
 
 At first, I did it with just instructions without separating into functions, but I wanted to have cleaner code, so I decided to make functions.
 
-One of the hardest thing to support was the special characters because it wasn't support by the script. So I had the sanitize the path names.
+One of the hardest thing to support was the special characters because it wasn't support by the script. So I had the sanitize the path names and then convert the special characters from their octal form to utf-8.
 
 #### Step 3: The tests
 There wasn't much to do, in the end, it was mostly about result verification, where I used unittest for the creation of unit tests.
 
 It was enough to check if all the files were in the right commits, where each folder corresponded to a commit.
 
-I also sanitize the path names
+I also sanitize the path names and handle the special chararacters
 
 #### Step 4: The workflow
 It was something quite rudimentary in the end, the most important thing for me was to properly separate the steps. A difficulty I encountered was handling GitHub Actions since I faced several errors in my workflow due to a lack of GitHub Token. However, after that, it got sorted out quickly.
 
 For the last commit, I just implemented Docker in the workflow which seems to be the best practices in my opinion.
+
+The workflow runs directly the test script which execute the main script. That means there is always unit tests to check if there is no problem at all with the backup
 
 #### Additional Step: Docker
 
