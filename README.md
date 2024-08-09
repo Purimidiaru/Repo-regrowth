@@ -1,7 +1,7 @@
-# DevOps Technical Project - Descartes Underwriting
+# Repo Regrowth
 
 ## Introduction
-Here is my repo for the DevOps technical project of Descartes Underwriting.
+Here is my a tool I've developped to make backup of a repo
 
 This README explains in a few sentences how I proceeded for this project.
 
@@ -51,12 +51,6 @@ The workflow runs directly the test script which execute the main script. That m
 I suddenly reminded during a waking-up that it was the best to create a virtual environnement through Docker.
 
 There is only a simple Dockerfile yet really important to get the right resultats because I noticed that I get difference results depending of the OS used to test the project.
-
-**Note**: The last changes was simply pure optimization and README writting to explain you how I process it. 
-
-At the end, **I took between 2 and 3 hours** just as suggested to be fair and square.
-
-**I turned off the workflow to ensure useless billing. You are free to turn it on and also test it in any way you want!**
 
 
 If you have any questions, feel free to ask!
