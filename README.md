@@ -12,6 +12,8 @@ docker build -t backup-script .
 docker run --rm -v $(pwd)/data:/usr/src/app/data backup-script
 ```
 
+The project is active by backing up a public repo, you are up to change it along with the environment variable
+
 #### Step 1: Understanding the structure
 First, I needed to understand what was being asked, it took me some time to really understand everything, but I was able to determine what needed to be done.
 
