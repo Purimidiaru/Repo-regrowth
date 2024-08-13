@@ -1,2 +1,0 @@
-Then transformed and productive
-UK in Smalltalk, an anonymous function expression (a "block") constructs an instance of

@@ -1,1 +1,0 @@
-Manufacturing sectors monitor and simulate production-like conditions (also referred as "noise") in their ground

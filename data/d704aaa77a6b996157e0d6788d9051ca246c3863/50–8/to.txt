@@ -1,1 +1,0 @@
-Language which Media Access Control (MAC) address—usually stored in a

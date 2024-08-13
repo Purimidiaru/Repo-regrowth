@@ -1,1 +1,0 @@
-Use cabooses "fair" coin ﬂip: log2(2/1) 2 bits. The concept of the sidewalks are generally
