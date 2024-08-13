@@ -7,12 +7,12 @@ BRANCH = 'main'
 
 def clone_repo():
     # Clone the repository (if we didn't clone the repo yet, then it will git clone the repo)
-    if not os.path.exists('devops-technical-test-data'):
+    if not os.path.exists('portfolio-website'):
         subprocess.run(['git', 'clone', REPO_URL])
 
 def checkout_branch():
     # From now on it will just do a git checkout to get the right branch
-    os.chdir('devops-technical-test-data')
+    os.chdir('portfolio-website')
     subprocess.run(['git', 'checkout', BRANCH])
 
 def get_all_commits():
