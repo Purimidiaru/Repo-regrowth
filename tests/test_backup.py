@@ -37,7 +37,7 @@ class TestBackupScript(unittest.TestCase):
         self.assertTrue(os.path.exists('data'))
 
     def test_commits_backup(self):
-        os.chdir('devops-technical-test-data')
+        os.chdir('portfolio-website')
         # Get commit hashes
         commits = subprocess.check_output(['git', 'log', '--pretty=format:%H']).decode('utf-8').splitlines()
         os.chdir('..')
