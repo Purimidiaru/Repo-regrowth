@@ -58,14 +58,14 @@ class TestBackupScript(unittest.TestCase):
 
     def get_files_from_commit(self, commit):
         # Getting files to backup with git show command
-        os.chdir('devops-technical-test-data')
+        os.chdir('portfolio-website')
         commit_files_output = subprocess.check_output(['git', 'show', '--pretty=format:', '--name-only', commit]).decode('utf-8')
         os.chdir('..')
         return commit_files_output.splitlines()
 
     # Same principe as test_commits_backup function but with files from commit dirs
     def test_files_backed_up(self):
-        os.chdir('devops-technical-test-data')
+        os.chdir('portfolio-website')
         commits = subprocess.check_output(['git', 'log', '--pretty=format:%H']).decode('utf-8').splitlines()
         os.chdir('..')
         for commit in commits:
