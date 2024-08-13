@@ -2,8 +2,8 @@ import os
 import subprocess
 import codecs
 
-REPO_URL = 'https://github.com/descartes-underwriting/devops-technical-test-data.git'
-BRANCH = '01-01-2022-test'
+REPO_URL = 'https://github.com/Purimidiaru/portfolio-website'
+BRANCH = 'main'
 
 def clone_repo():
     # Clone the repository (if we didn't clone the repo yet, then it will git clone the repo)
